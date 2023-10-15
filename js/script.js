@@ -26,8 +26,6 @@ $(document).ready(function () {
             success: function(response) {
                 console.log(response);
                 displayUserInfo(response);
-                $("#userAvatar").attr('src', response.avatar_url);
-    $("#userAvatar").show();
             },
             error: function(error) {
                 console.log(error);
@@ -50,18 +48,21 @@ function isUsernameBlank(username) {
 function displayUserInfo(user) {
 
     var userInfoString = `
-        <p><strong>Login:</strong> ${user.login}</p>
-        <p><strong>Nome:</strong> ${user.name || 'Não informado'}</p>
-        <p><strong>Seguidores:</strong> ${user.followers}</p>
-        <p><strong>Repositórios públicos:</strong> ${user.public_repos}</p>
+        <p><strong class="container_userLabelInfo">Login:</strong> ${user.login}</p>
+        <p><strong class="container_userLabelInfo">Nome:</strong> ${user.name || 'Não informado'}</p>
+        <p><strong class="container_userLabelInfo">Seguidores:</strong> ${user.followers}</p>
+        <p><strong class="container_userLabelInfo">Repositórios públicos:</strong> ${user.public_repos}</p>
     `;
+
+    $(".container_userAvatar").attr('src', user.avatar_url);
+    $(".container_userAvatar").show();
     
-    $("#userInfo").html(userInfoString);
+    $(".container_userDetails").html(userInfoString);
 }
 
 function displayError(message) {
-    $("#userInfo").html(`<p style="color: red;">${message}</p>`);
-    $("#userAvatar").hide();
+    $(".container_userAvatar").hide();
+    $(".container_userDetails").html(`<p style="color: red; font-size: 14px; font-weight: bold;">${message}</p>`);
 }
 
 function getMockResponse() {
