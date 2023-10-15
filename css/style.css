@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Estilização para o título */
+.main-title {
+    color: green;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+/* Estilização para o formulário */
+.container__form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container__form label {
+    color: green;
+    font-weight: bold;
+}
+
+ /* Estilização para os campos de texto e caixa de seleção */
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Estilização para o botão de submissão */
+.btn_search {
+    border: none;
+    position: relative;
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+    padding: 12px 20px;
+    border-radius: 4px;
+    background-color: green;
+}
+
+.btn_search:hover {
+    bottom: 1px;
+    background-color: #45a049;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.container__userInfo {
+    display: flex;
+    flex-direction: row;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#userAvatar {
+    max-width: 100px;
+    border-radius: 50%;
+}
+
+.container_userDetails {
+    width: 100%;
+    padding: 15px;
+    font-size: 14px;
+    margin-left: 30px;
+}
+
+.container_userLabelInfo {
+    color: darkgreen;
+}
