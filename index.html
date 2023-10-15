@@ -5,21 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub User Info</title>
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
 
-    <form id="githubForm">
+    <h1 class="main-title">GitHub User Info</h1>
+
+    <form id="githubForm" class="container__form">
         <label for="username">Nome de usuário no GitHub:</label>
-        <input type="text" id="username" name="username">
-        <button type="button" id="submitButton">Buscar</button>
+        <input type="text" id="username" name="username" placeholder="octocat">
+        <button type="button" id="submitButton" class="btn_search">Buscar</button>
     </form>
 
-    <div id="userInfo">
+    <div id="userInfo" class="container__userInfo">
         <!-- Informações do usuário serão exibidas aqui -->
+        <img id="userAvatar" alt="Avatar do usuário" class="container_userAvatar" src="https://octodex.github.com/images/privateinvestocat.jpg">
+        
+        <div id="userDetails" class="container_userDetails">
+            <p>
+                <strong class="container_userLabelInfo">Login:</strong> octocat 
+            </p>
+            <p>
+                <strong class="container_userLabelInfo">Nome:</strong> octocat
+            </p>
+            <p>
+                <strong class="container_userLabelInfo">Seguidores:</strong> >1M
+            </p>
+            <p>
+                <strong class="container_userLabelInfo">Repositórios públicos:</strong> 2 
+            </p>
+        </div>
+
     </div>
 
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
 
 </body>
 </html>
