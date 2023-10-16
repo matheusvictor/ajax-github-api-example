@@ -1,0 +1,23 @@
+{
+  "name": "ajax-github-api-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "json-server --watch ./database/db.json --routes ./routes/routes.json --static ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheusvictor/ajax-github-api-example.git"
+  },
+  "author": "Matheus Victor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matheusvictor/ajax-github-api-example/issues"
+  },
+  "homepage": "https://github.com/matheusvictor/ajax-github-api-example#readme",
+  "devDependencies": {
+    "json-server": "^0.17.4"
+  }
+}
