@@ -33,3 +33,9 @@ Certifique-se de ter o seguinte instalado em sua máquina:
     ```bash
     npm run dev
     ```
+
+##
+
+- [Mario Souto - Dev Soutinho => Como pegar dados de uma API? Como fazer AJAX ou "AJAJ"! | Pegando dados de serviços via JavaScript](https://www.youtube.com/watch?v=85vJXFpXLQw)
+
+- [NevesCode => CARREGAR DADOS SEM REFRESH - AJAX(JQUERY, PHP, MYSQL)](https://www.youtube.com/watch?v=FVJtuYHnCuE)
