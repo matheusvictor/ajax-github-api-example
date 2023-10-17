@@ -17,6 +17,7 @@ $(document).ready(function () {
         }
 
         if (isDevelopment) {
+            console.log("Requisições realizadas em ambiente de desenvolvimento");
             switch (username) {
                 case "octocat":
                     username = 1;
@@ -25,60 +26,55 @@ $(document).ready(function () {
                     username = 2;
                     break;
             }
-        }        
+        } 
+        
+        console.log("Requisições realizadas para API do GitHub");
 
-        console.log(username)
-     
-        // simulateApiCallWithoutJquery(username)        
-        simulateApiCallWithJquery(username);   
+        simulateApiCallWithoutJquery(username)        
+        // simulateApiCallWithJquery(username);   
     });
 });
 
 function simulateApiCallWithoutJquery(username) {
-    console.log("Chama de API sem JQuery");
+    console.log("Chamada de API sem JQuery");
 
     // Chamada AJAX
     fetch(apiUrl + username)
-        .then(response => {          
+        .then(function(response) {
             switch(response.status) {
                 case 200:
                     return response.json();
                 case 403:
-                    displayError("Limite de requisições atingido. Tente novamente mais tarde.");
-                    return;
+                    displayError("Limite de requisições atingido. Tente novamente mais tarde.");  
+                    return;          
                 case 404:
                     displayError("Usuário não encontrado no GitHub.");
                     return;
-                case 500:
-                    displayError("Erro interno do servidor. Tente novamente mais tarde.");
-                    return;
                 default:
-                    displayError("Erro ao buscar informações do usuário do GitHub.");
+                    displayError("Erro interno do servidor. Tente novamente mais tarde.");
                     return;
             }
         })
-        .then(data => {
-            console.log('Dados da API:', data);
-            displayUserInfo(data)
+        .then(function (data) {            
+            console.log('Dados retornados da API:', data);
+            displayUserInfo(data);
         })
-        .catch(error => {
-            console.log('Erro na chamada à API:', error);         
-        });
+        .catch(error => console.log('Erro na chamada à API:', error)
+    );
 }
 
 function simulateApiCallWithJquery(username) {
-    console.log("Chama de API com JQuery");
+    console.log("Chamada de API com JQuery");
 
     $.ajax({
         url: apiUrl + username,
         method: 'GET',
         statusCode: {
-        url: apiUrl + username,
+            403: function() {
+                displayError("Limite de requisições atingido. Tente novamente mais tarde.");                
+            },
             404: function() {
                 displayError("Usuário não encontrado no GitHub.");
-            },
-            403: function() {
-                displayError("Limite de requisições atingido. Tente novamente mais tarde.");
             },
             500: function() {
                 displayError("Erro interno do servidor. Tente novamente mais tarde.");
@@ -105,17 +101,21 @@ function isUsernameBlank(username) {
 
 function displayUserInfo(user) {
 
-    var userInfoString = `
+    var userInfoString = "";
+
+    if (user) {
+        userInfoString = `
         <p><strong class="container_userLabelInfo">Login:</strong> ${user.login}</p>
         <p><strong class="container_userLabelInfo">Nome:</strong> ${user.name || 'Não informado'}</p>
         <p><strong class="container_userLabelInfo">Seguidores:</strong> ${user.followers}</p>
         <p><strong class="container_userLabelInfo">Repositórios públicos:</strong> ${user.public_repos}</p>
     `;
 
-    $(".container_userAvatar").attr('src', user.avatar_url);
-    $(".container_userAvatar").show();
+        $(".container_userAvatar").attr('src', user.avatar_url);
+        $(".container_userAvatar").show();
     
-    $(".container_userDetails").html(userInfoString);
+        $(".container_userDetails").html(userInfoString);
+    }
 }
 
 function displayError(message) {
